@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <title>Website_proxy</title>
+        <title> </title>
         <style>
             html{
                 height: 100%;
@@ -23,12 +23,19 @@
         <script>
             const Page=`https://101.33.248.217:11821/`;
             document.getElementById("page").src=Page+location.hash.slice(1);
-            window.addEventListener("load",()=>{
+            // window.addEventListener("load",()=>{
                 window.addEventListener("message",(e)=>{
-                    console.log(e.data);
-                    window.history.pushState({},0,location.origin+'#'+e.data);
+                    // console.log(e.data);
+                    const bs=e.data.indexOf(' ');
+                    const type=e.data.slice(0,bs);
+                    const data=e.data.slice(bs+1);
+                    console.log(data);
+                    if(type=="history")
+                        window.history.pushState({},0,location.origin+'#'+data);
+                    else if(type=="title")
+                        document.title=data;
                 });
-            });
+            // });
         </script>
     </body>
 </html>
