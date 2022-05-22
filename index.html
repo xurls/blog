@@ -23,7 +23,6 @@
         <script>
             const Page=`https://101.33.248.217:11821/`;
             document.getElementById("page").src=Page+location.hash.slice(1);
-            // window.addEventListener("load",()=>{
                 window.addEventListener("message",(e)=>{
                     // console.log(e.data);
                     const bs=e.data.indexOf(' ');
@@ -35,7 +34,9 @@
                     else if(type=="title")
                         document.title=data;
                 });
-            // });
+            window.addEventListener("hashchange",()=>{
+                document.getElementById("page").src=Page+location.hash.slice(1);
+            });
         </script>
     </body>
 </html>
