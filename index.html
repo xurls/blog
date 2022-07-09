@@ -27,9 +27,10 @@
                     // console.log(e.data);
                     const bs=e.data.indexOf(' ');
                     const type=e.data.slice(0,bs);
-                    const data=e.data.slice(bs+1);
+                    let data=e.data.slice(bs+1);
                     console.log(data);
-                    if(type=="history" && window.location.hash!=(data='#'+data))
+                    data='#'+data;
+                    if(type=="history" && location.hash!=data)
                         window.history.pushState({},0,location.origin+data);
                     else if(type=="title")
                         document.title=data;
