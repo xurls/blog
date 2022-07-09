@@ -29,8 +29,7 @@
                     const type=e.data.slice(0,bs);
                     let data=e.data.slice(bs+1);
                     console.log(data);
-                    data='#'+data;
-                    if(type=="history" && location.hash!=data)
+                    if(type=="history" && location.hash!=(data='#'+data))
                         window.history.pushState({},0,location.origin+data);
                     else if(type=="title")
                         document.title=data;
